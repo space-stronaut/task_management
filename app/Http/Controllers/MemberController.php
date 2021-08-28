@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\UserEmail;
+use Illuminate\Support\Facades\Mail;
 
 class MemberController extends Controller
 {
@@ -43,6 +45,8 @@ class MemberController extends Controller
             "password" => bcrypt($request->password),
             "roles" => $request->roles
         ]);
+
+        Mail::to($request->email)->send(new UserEmail());
 
         return redirect('/members');
     }
