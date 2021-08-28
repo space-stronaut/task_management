@@ -17,7 +17,9 @@ class HomeController extends Controller
     {
         $tasks = count(Task::all());
         $members = count(User::where('roles', 'member')->get());
+        $completed = count(Task::where('status', 'done')->get());
+        $total = count(User::all());
 
-        return view('home', compact('tasks', 'members'));
+        return view('home', compact('tasks', 'members', 'total', 'completed'));
     }
 }

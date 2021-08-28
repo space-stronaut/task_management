@@ -26,14 +26,9 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
-                        <a href="/tasks/create" class="btn btn-primary">+ Tambah Task</a>
-                        <form action=""  class="d-flex mx-auto search" method="GET">
-
-                            <input type="search" class="form-control" name="cari" placeholder="Search Users ..." value="{{ request('search')  }}" aria-label="search">
-                            <button  class="btn btn-outline-info" type="submit">
-                                Search
-                            </button>
-                        </form>
+                        @if (Auth::user()->roles == 'master')
+                            <a href="/tasks/create" class="btn btn-primary">+ Tambah Task</a>
+                        @endif
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -75,12 +70,17 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($task->status != 'done')
-                                            <a href="/tasks/edit/{{$task->id}}" class="btn btn-success">Edit</a>
-                                            <a href="/tasks/delete/{{$task->id}}" class="btn btn-danger">Hapus</a>
-                                            <a href="/tasks/show/{{$task->id}}" class="btn btn-info">Show</a>
+                                        @if (Auth::user()->roles == 'master')
+                                            @if ($task->status != 'done')
+                                                <a href="/tasks/edit/{{$task->id}}" class="btn btn-success">Edit</a>
+                                                <a href="/tasks/delete/{{$task->id}}" class="btn btn-danger">Hapus</a>
+                                                <a href="/tasks/show/{{$task->id}}" class="btn btn-info">Show</a>
+                                            @else
+                                                <a href="/tasks/show/{{$task->id}}" class="btn btn-info">Show</a>
+                                                <a href="/tasks/delete/{{$task->id}}" class="btn btn-danger">Hapus</a>
+                                            @endif
                                         @else
-                                            <a href="/tasks/delete/{{$task->id}}" class="btn btn-danger btn-block">Hapus</a>
+                                            <a href="/tasks/show/{{$task->id}}" class="btn btn-info">Go To Activity</a>
                                         @endif
                                     </td>
                                 </tr>

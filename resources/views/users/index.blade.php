@@ -27,13 +27,6 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-end">
                         <a href="/members/create" class="btn btn-primary">+ Tambah Member</a>
-                        <form action=""  class="d-flex mx-auto search" method="GET">
-
-                            <input type="search" class="form-control" name="cari" placeholder="Search Users ..." value="{{ request('search')  }}" aria-label="search">
-                            <button  class="btn btn-outline-info" type="submit">
-                                Search
-                            </button>
-                        </form>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

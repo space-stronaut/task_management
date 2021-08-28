@@ -61,9 +61,9 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>}</h3>
+                                <h3>{{$completed}}</h3>
 
-                                <p>Selesai</p>
+                                <p>Task Completed</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -76,7 +76,7 @@
                         <!-- small box -->
                         <div class="small-box bg-maroon">
                             <div class="inner">
-                                <h3></h3>
+                                <h3>{{$total}}</h3>
 
                                 <p>Total User</p>
                             </div>
