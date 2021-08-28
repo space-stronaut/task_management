@@ -16,9 +16,11 @@ class UserEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name,$email,$password)
     {
-        //
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
     }
 
     /**
@@ -28,6 +30,13 @@ class UserEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email');
+        return $this->from('pengirim@malasngoding.com')
+        ->view('email')
+        ->with(
+         [
+             'name' => $this->name,
+             'email' => $this->email,
+             'password' => $this->password
+         ]);
     }
 }

@@ -46,7 +46,7 @@ class MemberController extends Controller
             "roles" => $request->roles
         ]);
 
-        Mail::to($request->email)->send(new UserEmail());
+        Mail::to($request->email)->send(new UserEmail($request->name,$request->email,$request->password));
 
         return redirect('/members');
     }
