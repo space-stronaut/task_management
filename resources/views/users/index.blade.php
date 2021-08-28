@@ -28,6 +28,11 @@
                     <div class="card-header d-flex justify-content-end">
                         <a href="/members/create" class="btn btn-primary">+ Tambah Member</a>
                     </div>
+                    @if (Auth::user()->roles == 'member')
+                        @php
+                            return abort(404);
+                        @endphp
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table class="table table-bordered">

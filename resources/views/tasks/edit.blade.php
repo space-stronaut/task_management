@@ -29,6 +29,11 @@
                     <div class="card-header">
                         <a href="/tasks" class="btn btn-outline-secondary"><i class="fas fa-arrow-left"></i> Back</a>
                     </div>
+                    @if (Auth::user()->roles == 'member')
+                        @php
+                            return abort(404);
+                        @endphp
+                    @endif
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form action="/tasks/update/{{$task->id}}" method="POST" enctype="multipart/form-data">

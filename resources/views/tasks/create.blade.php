@@ -68,6 +68,11 @@
                 <!-- /.card -->
             </div><!-- /.container-fluid -->
         </section>
+        @if (Auth::user()->roles == 'member')
+            @php
+                return abort(404);
+            @endphp
+        @endif
         <!-- /.content -->
     </div>
 @endsection

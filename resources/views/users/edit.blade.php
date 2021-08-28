@@ -3,6 +3,11 @@
 
 @section('content')
     <div class="content-wrapper">
+        @if (Auth::user()->roles == 'member')
+            @php
+                return abort(404);
+            @endphp
+        @endif
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
